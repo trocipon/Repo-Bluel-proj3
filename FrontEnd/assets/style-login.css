@@ -1,0 +1,165 @@
+/****All the page****/
+
+body {
+    margin:0;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+    line-height: 1;
+    background-color: #ffffff;
+}
+
+.main-container {
+	width: 100%;
+    height: 960px;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+    background-color: rgba(255, 254, 248, 1);
+    line-height: 1;
+
+}
+
+li, .forgotten-password, input[type="submit"], footer>p:hover {          /****Change of cursor when hover****/
+    cursor: pointer;
+}
+
+li:hover, .forgotten-password:hover, footer>p:hover {                    /****Change of color when hover****/
+	color: #B1663C;
+}
+
+/****Header****/
+
+
+header {
+	display: flex;
+    max-width: 1140px;
+    margin: auto;
+	justify-content: space-between;
+	padding: 50px 0
+}
+
+h1{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C;
+    justify-content: space-around;
+    height: 42px;
+}
+
+h1 > span {
+	font-family: 'Work Sans';
+	font-size:10px;
+	letter-spacing: 5%;
+    font-weight: initial;
+}
+
+ul {
+    display: flex;
+	align-items: center;
+	list-style: none;
+}
+
+li {
+	padding: 0 22px;
+	font-size: 1.2em;
+}
+
+.active {                                    /****Active nav menu in bold on that page****/
+    font-weight: bold;
+}
+
+img {
+    height: 22px;
+}
+
+
+/****Main****/
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 100px;
+}
+
+h2{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.email-container, .password-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#email, #password {
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    height: 51px;
+    width: 379px;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+label, .forgotten-password {
+    color: rgba(61, 61, 61, 1);
+}
+
+input[type="submit"]{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+    height: 36px;
+    border: none;
+}
+
+input[type="submit"]:hover {
+	background-color: rgba(14, 47, 40, 1);
+}
+
+.forgotten-password {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    margin: 0;
+}
+
+
+/****Footer****/
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 1140px;
+    height: 60px;  
+    margin: auto; 
+}
+
+footer>p {
+	padding: 0 22px;
+    font-weight: 300;
+}
