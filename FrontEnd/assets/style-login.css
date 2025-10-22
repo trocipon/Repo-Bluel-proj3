@@ -10,7 +10,7 @@ body {
 
 .main-container {
 	width: 100%;
-    height: 960px;
+    min-height: 960px;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
     background-color: rgba(255, 254, 248, 1);
@@ -18,11 +18,11 @@ body {
 
 }
 
-li, .forgotten-password, input[type="submit"], footer>p:hover {          /****Change of cursor when hover****/
+li, .forgotten-password, #valid, footer>p:hover {          
     cursor: pointer;
 }
 
-li:hover, .forgotten-password:hover, footer>p:hover {                    /****Change of color when hover****/
+li:hover, .forgotten-password:hover, footer>p:hover {                    
 	color: #B1663C;
 }
 
@@ -66,11 +66,11 @@ li {
 	font-size: 1.2em;
 }
 
-.active {                                    /****Active nav menu in bold on that page****/
+#login {                                    
     font-weight: bold;
 }
 
-img {
+.instagram-logo {
     height: 22px;
 }
 
@@ -94,7 +94,7 @@ h2{
     margin: 0;
 }
 
-form {
+#login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,7 +124,7 @@ label, .forgotten-password {
     color: rgba(61, 61, 61, 1);
 }
 
-input[type="submit"]{
+#valid {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -136,7 +136,7 @@ input[type="submit"]{
     border: none;
 }
 
-input[type="submit"]:hover {
+#valid:hover {
 	background-color: rgba(14, 47, 40, 1);
 }
 

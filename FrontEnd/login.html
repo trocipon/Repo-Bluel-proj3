@@ -18,25 +18,25 @@
 		        <ul>
 			        <li>projets</li>
 			        <li>contacts</li>
-			        <li class="active">login</li>
-			        <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			        <li id="login">login</li>
+			        <li><img class="instagram-logo" src="./assets/icons/instagram.png" alt="Instagram"></li>
 		        </ul>
 	        </nav>
         </header>
         <main>
             <div class="login-container">
                 <h2>Log In</h2>
-                <form method="get" action="#">
+                <form id="login-form">
                     <div class="email-container">
                         <label for="email">E-mail</label>
-                        <input type="email" name="email" id="email"> 
+                        <input type="email" name="email" id="email" value="sophie.bluel@test.tld"> 
                     </div>
                     <div class="password-container">
                         <label for="password">Mot de passe</label>
-                        <input type="password" name="password" id="password">
+                        <input type="password" name="password" id="password" value="S0phie">
                     </div>
                     <div class="login-button">
-                        <input type="submit" value="Se connecter">
+                        <button type="submit" id="valid">Se connecter</button>
                     </div>
                 </form>
                 <p class="forgotten-password">Mot de passe oublié</button>
@@ -46,5 +46,6 @@
    <footer>
 		<p class="legal-information">Mentions Légales</p>
    </footer> 
+  <script src="assets/js/login.js"></script>
 </body>
 </html>
