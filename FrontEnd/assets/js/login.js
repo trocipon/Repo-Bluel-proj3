@@ -1,22 +1,14 @@
-// 1 : Récupérer les informations saisies par l'utilisateur
+const url = "http://localhost:5678/api/users/login"; 
 
 const form = {
   email: document.querySelector("#email"),
   password: document.querySelector("#password"),
   valid: document.querySelector("#valid")
 };
-
-
-// Regex pour vérifier le format du (email) et (password)
-// https://regex101.com/
-
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/; 
 
-
-// Envoi du couple (email) et (password) à l'API
-const url = "http://localhost:5678/api/users/login";          // Déclaration de l'url de l'API
-
+// Envoi des informations saisies par l'utilisateur à l'API
 async function userLogin(email, password) {                   
   const response = await fetch(url, {
     method: "POST",
@@ -32,11 +24,10 @@ async function userLogin(email, password) {
   return response.json();
 }
 
-// Event de vérification des <input> (email) et (password)
+// Event de vérification des <input> (email et password) transmis à l'API
 form.valid.addEventListener("click", (e) => {
   e.preventDefault();                                                   // Désactivation du comportement par défaut du navigateur
   if (!email.checkValidity() && !emailRegex.test(email.value)) {
-    // HTML 5 = input type text, number, email, password .. 
     alert("Veuillez entrer une adresse e-mail valide")
   }if (!password.checkValidity() && !passwordRegex.test(password.value)) {
     alert("Veuillez entrer un mot de passe valide");
@@ -59,5 +50,3 @@ form.valid.addEventListener("click", (e) => {
     });
   }   
 });
-
-
