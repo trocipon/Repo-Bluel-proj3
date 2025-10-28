@@ -7,7 +7,6 @@ body {
     line-height: 1;
     background-color: #ffffff;
 }
-
 .main-container {
 	width: 100%;
     min-height: 960px;
@@ -15,13 +14,7 @@ body {
 	font-size: 14px;
     background-color: rgba(255, 254, 248, 1);
     line-height: 1;
-
 }
-
-li, .forgotten-password, #valid, footer>p:hover {          
-    cursor: pointer;
-}
-
 li:hover, .forgotten-password:hover, footer>p:hover {                    
 	color: #B1663C;
 }
@@ -31,7 +24,6 @@ li:hover, .forgotten-password:hover, footer>p:hover {
 
 /****Header****/
 
-
 header {
 	display: flex;
     max-width: 1140px;
@@ -39,7 +31,6 @@ header {
 	justify-content: space-between;
 	padding: 50px 0
 }
-
 h1{
 	display: flex;
 	flex-direction: column;
@@ -50,29 +41,24 @@ h1{
     justify-content: space-around;
     height: 42px;
 }
-
 h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 5%;
     font-weight: initial;
 }
-
 ul {
     display: flex;
 	align-items: center;
 	list-style: none;
 }
-
 li {
 	padding: 0 22px;
 	font-size: 1.2em;
 }
-
 #login {                                    
     font-weight: bold;
 }
-
 .instagram-logo {
     height: 22px;
 }
