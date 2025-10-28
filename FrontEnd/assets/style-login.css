@@ -72,7 +72,6 @@ li {
     gap: 30px;
     padding-top: 100px;
 }
-
 h2{
 	font-family: 'Syne';
 	font-weight: 700;
@@ -82,37 +81,31 @@ h2{
     justify-content: center;
     margin: 0;
 }
-
 #login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
 }
-
 .email-container, .password-container {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
-
 #email, #password {
     border: none;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
     height: 51px;
     width: 379px;
 }
-
 .login-button {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
-
-label, .forgotten-password {
+#login-form label, .forgotten-password {
     color: rgba(61, 61, 61, 1);
 }
-
 #valid {
 	font-family: 'Syne';
 	font-weight: 700;
@@ -124,11 +117,9 @@ label, .forgotten-password {
     height: 36px;
     border: none;
 }
-
 #valid:hover {
 	background-color: rgba(14, 47, 40, 1);
 }
-
 .forgotten-password {
     display: flex;
     justify-content: center;
@@ -147,7 +138,6 @@ footer {
     height: 60px;  
     margin: auto; 
 }
-
 footer>p {
 	padding: 0 22px;
     font-weight: 300;
