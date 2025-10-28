@@ -25,6 +25,9 @@ li, .forgotten-password, #valid, footer>p:hover {
 li:hover, .forgotten-password:hover, footer>p:hover {                    
 	color: #B1663C;
 }
+.pointer {
+	cursor: pointer;
+}
 
 /****Header****/
 
