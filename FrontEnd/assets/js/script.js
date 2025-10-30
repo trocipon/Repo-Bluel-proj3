@@ -11,9 +11,9 @@ const openModalButton = document.getElementById("portfolio-edit");
 const closeModalButton = modal.querySelectorAll(".fa-xmark");
 const backToModalStep1 = modal.querySelectorAll(".fa-arrow-left");
 const modalStep1 = modal.querySelector(".step-1");
-const goToModalStep2 = document.getElementById("go-to-add-picture")
+const goToModalStep2 = document.getElementById("go-to-add-picture");
 const modalStep2 = modal.querySelector(".step-2");
-const uploadInput = document.getElementById("add-picture-input");
+let uploadInput = document.getElementById("add-picture-input");
 const previewContainer = document.getElementById("preview-container");
 const initialPreviewHTML = previewContainer.innerHTML;
 const newWorkForm = document.querySelector(".newWork-form");
@@ -97,19 +97,19 @@ async function getWorks(categoryId = 0) {
 function showStep1() {
   modalStep1.style.display = "flex";
   modalStep2.style.display = "none";
-};
+}
 function showStep2() {
   modalStep1.style.display = "none";
   modalStep2.style.display = "flex";
-};
+}
 
 // Afficher la galerie photo dans la modale (step 1)
 async function displayWorksForModal(categoryId = 0) {
   try {
     const response = await fetch(`${url}/works`);
     const data = await response.json();
-    let filterData = 
-        categoryId === 0
+    let filterData =
+      categoryId === 0
         ? data
         : data.filter((work) => work.category.id === categoryId);
     const modalGallery = modal.querySelector(".gallery");
@@ -118,12 +118,12 @@ async function displayWorksForModal(categoryId = 0) {
 
     filterData.forEach((item) => {
       const figure = document.createElement("figure");
-      figure.id = "figure-modal"
-      
+      figure.id = "figure-modal";
+
       const img = document.createElement("img");
       img.src = item.imageUrl;
       img.alt = item.title;
-      img.id = "img-modal"
+      img.id = "img-modal";
 
       const deleteContainer = document.createElement("div");
       deleteContainer.id = "trashContainer";
@@ -161,9 +161,15 @@ async function displayWorksForModal(categoryId = 0) {
 
 // Fonction : réinitialiser le chargeur photo
 function resetUpload() {
-  uploadInput.value="";
+  uploadInput.value = "";
   previewContainer.innerHTML = initialPreviewHTML;
   validateModalStep2.disabled = true;
+
+  if (uploadInput) {
+    uploadInput.addEventListener("change", uploadInputChangeHandler);
+  }
+  document.getElementById("newWorkTitle").value = "";
+  document.getElementById("newWorkCategory").innerHTML = "";
 }
 
 // Afficher les catégories (select/option) dans la modale (step 2)
@@ -192,7 +198,7 @@ async function uploadImage(file) {
   const response = await fetch(`${url}/works`, { 
     method: "POST",
     headers: {
-      Authorization: 'Bearer ' + token,
+      Authorization: "Bearer " + token,
     },
     body: formData,
   });
@@ -208,7 +214,7 @@ function uploadInputChangeHandler() {
   const file = uploadInput.files[0];
   if (file) {
     const maxSize = 4 * 1024 * 1024;
-    const allowedTypes = ['image/jpeg', 'image/png'];
+    const allowedTypes = ["image/jpeg", "image/png"];
     if (!allowedTypes.includes(file.type) || file.size > maxSize) {
       alert("Fichier invalide");
       resetUpload();
@@ -270,7 +276,7 @@ openModalButton.addEventListener("click", async () => {
 });
 
 // Fermeture de la modale (bouton)
-closeModalButton.forEach(icon => {
+closeModalButton.forEach((icon) => {
   icon.addEventListener("click", () => {
     modal.close();
     modal.style.display = "none";
@@ -300,7 +306,7 @@ modal.addEventListener("click", (event) => {
 });
 
 // Passage step1-->step2
-goToModalStep2.addEventListener('click', () => {
+goToModalStep2.addEventListener("click", () => {
   showStep2();
   validateModalStep2.disabled = true;
 });
