@@ -93,6 +93,8 @@ figure {
 }
 .gallery img {
     width: 100%;
+	height: 408.15px;
+	object-fit: cover;
 }
 figcaption {
 	color: #3D3D3D;
@@ -223,7 +225,6 @@ hr {
 }
 #img-modal {
 	height: 102.57px;
-	width: auto;
 }
 #trashContainer {
 	display : flex;
