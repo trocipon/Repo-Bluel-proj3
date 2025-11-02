@@ -178,6 +178,33 @@ async function displayWorksForModal(categoryId = 0) {
   }
 }
 
+// Vérifier et afficher le preview photo
+function uploadInputChangeHandler() {
+  const file = uploadInput.files[0];
+  if (file) {
+    const maxSize = 4 * 1024 * 1024;
+    const allowedTypes = ["image/jpeg", "image/png"];
+    if (!allowedTypes.includes(file.type)) {
+      alert("Format du fichier invalide");
+      resetUpload();
+      return;
+    }else if (file.size > maxSize) {
+      alert("Le fichier est trop lourd");
+      resetUpload();
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+    previewContainer.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+    };
+    reader.readAsDataURL(file);
+    displayCategoriesForModal();
+    checkValidation();
+  } else {
+    resetUpload();
+  }
+}
+
 // Fonction : réinitialiser le chargeur photo
 function resetUpload() {
   // Réinitialise le previewContainer et le bouton valider
@@ -192,6 +219,8 @@ function resetUpload() {
   // Reset le formulaire
   newWorkTitle.value = "";
   newWorkCategory.innerHTML = "";
+  // Vérifie si le formulaire est valide
+  checkValidation();
 }
 
 // Afficher les catégories (select/option) dans la modale (step 2)
@@ -202,33 +231,22 @@ async function displayCategoriesForModal() {
     const select = document.getElementById("newWorkCategory");
     select.innerHTML = "";
 
+    const emptyOption = document.createElement("option");
+    emptyOption.value = "";
+    emptyOption.textContent = "";
+    emptyOption.selected = true;
+    emptyOption.disabled = true; 
+    select.appendChild(emptyOption);
+
     data.forEach((item) => {
       const option = document.createElement("option");
       option.value = item.id;
       option.textContent = item.name;
       select.appendChild(option);
     });
+    checkValidation();
   } catch (error) {
     console.log(error);
-  }
-}
-
-// Envoyer un newWork vers l'API et l'afficher
-async function uploadImage(file) {
-  const formData = new FormData();
-  formData.append("image", file);
-  const response = await fetch(`${url}/works`, { 
-    method: "POST",
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-    body: formData,
-  });
-  if (response.ok) {
-    const data = await response.json();
-    return data.imageUrl;
-  } else {
-    throw new Error("Échec de l'opération, vous n'avez pas l'autorisation pour cette action.");
   }
 }
 
@@ -249,25 +267,22 @@ function checkValidation() {
   }
 }
 
-// Vérifier et afficher le preview photo
-function uploadInputChangeHandler() {
-  const file = uploadInput.files[0];
-  if (file) {
-    const maxSize = 4 * 1024 * 1024;
-    const allowedTypes = ["image/jpeg", "image/png"];
-    if (!allowedTypes.includes(file.type) || file.size > maxSize) {
-      alert("Fichier invalide");
-      resetUpload();
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      previewContainer.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
-    };
-    reader.readAsDataURL(file);
-    displayCategoriesForModal();
+// Envoyer nouvelle photo + infos vers l'API
+async function uploadImage(file) {
+  const formData = new FormData();
+  formData.append("image", file);
+  const response = await fetch(`${url}/works`, { 
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+    body: formData,
+  });
+  if (response.ok) {
+    const data = await response.json();
+    return data.imageUrl;
   } else {
-    resetUpload();
+    throw new Error("Échec de l'opération, vous n'avez pas l'autorisation pour cette action.");
   }
 }
 
@@ -349,7 +364,6 @@ backToModalStep1.forEach(icon => {
 uploadInput.addEventListener("change", uploadInputChangeHandler);
 
 // Change l'affichage du bouton de confirmation de la step 2 selon la saisie utilisateur
-uploadInput.addEventListener("change", checkValidation);
 newWorkTitle.addEventListener("input", checkValidation);
 newWorkCategory.addEventListener("change", checkValidation);
 
