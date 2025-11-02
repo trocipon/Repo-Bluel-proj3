@@ -25,20 +25,6 @@
 #login-form label, .forgotten-password {
     color: rgba(61, 61, 61, 1);
 }
-#valid {
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px ;
-    height: 36px;
-    border: none;
-}
-#valid:hover {
-	background-color: rgba(14, 47, 40, 1);
-}
 .forgotten-password {
     display: flex;
     justify-content: center;
