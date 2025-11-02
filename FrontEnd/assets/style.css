@@ -32,8 +32,11 @@ li:hover, .forgotten-password:hover, footer>p:hover {
 .pointer {
 	cursor: pointer;
 }
-.click-me-button:hover {
+.hover:hover {
 	background-color: rgba(14, 47, 40, 1);
+}
+.disabled {
+	background-color: #A7A7A7;
 }
 
 /*********Header*********/
@@ -420,7 +423,6 @@ hr {
 	align-items: center;
 	width: 237px;
 	margin: 30px auto;
-	background-color: #A7A7A7;
 	font-size: 14px;
 	padding: 0px 8px;
 	min-width: 100px;

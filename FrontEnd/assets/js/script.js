@@ -17,6 +17,8 @@ let uploadInput = document.getElementById("add-picture-input");
 const previewContainer = document.getElementById("preview-container");
 const initialPreviewHTML = previewContainer.innerHTML;
 const newWorkForm = document.querySelector(".newWork-form");
+const newWorkTitle = document.getElementById("newWorkTitle");
+const newWorkCategory = document.getElementById("newWorkCategory"); 
 const validateModalStep2 = document.getElementById("validateNewWork");
 
 /***************************************************************/
@@ -93,6 +95,23 @@ async function getWorks(categoryId = 0) {
 
 // MODAL
 
+// Fermer la modale
+function closeModal () {
+  modal.close();
+  modal.style.display = "none";
+  showStep1();
+  resetUpload();
+}
+
+// Réinitialiser la modale
+function resetModal () {
+  newWorkTitle.value = "";
+  newWorkCategory.innerHTML = "";
+  validateModalStep2.disabled = true;
+  validateModalStep2.classList.remove ("pointer", "hover");
+  validateModalStep2.classList.add ("disabled");
+}
+
 // Naviguer dans la modale (step1 <-> step2)
 function showStep1() {
   modalStep1.style.display = "flex";
@@ -161,15 +180,18 @@ async function displayWorksForModal(categoryId = 0) {
 
 // Fonction : réinitialiser le chargeur photo
 function resetUpload() {
-  uploadInput.value = "";
+  // Réinitialise le previewContainer et le bouton valider
   previewContainer.innerHTML = initialPreviewHTML;
   validateModalStep2.disabled = true;
-
-  if (uploadInput) {
-    uploadInput.addEventListener("change", uploadInputChangeHandler);
-  }
-  document.getElementById("newWorkTitle").value = "";
-  document.getElementById("newWorkCategory").innerHTML = "";
+  validateModalStep2.classList.add("disabled");
+  validateModalStep2.classList.remove("pointer", "hover");
+  // Resélectionne le nouvel input + écouteurs
+  uploadInput = document.getElementById("add-picture-input");
+  uploadInput.addEventListener("change", uploadInputChangeHandler);
+  uploadInput.addEventListener("change", checkValidation);
+  // Reset le formulaire
+  newWorkTitle.value = "";
+  newWorkCategory.innerHTML = "";
 }
 
 // Afficher les catégories (select/option) dans la modale (step 2)
@@ -206,10 +228,28 @@ async function uploadImage(file) {
     const data = await response.json();
     return data.imageUrl;
   } else {
-    throw new Error("Erreur de l'upload");
+    throw new Error("Échec de l'opération, vous n'avez pas l'autorisation pour cette action.");
   }
 }
 
+// Déverrouillage du bouton d'envoi de la modale
+function checkValidation() {
+  if (
+    uploadInput.files.length > 0 &&
+    newWorkTitle.value.trim () !== "" &&
+    newWorkCategory.value !==""
+  ) {
+  validateModalStep2.disabled = false;
+  validateModalStep2.classList.add ("pointer", "hover");
+  validateModalStep2.classList.remove ("disabled");
+  }else{
+  validateModalStep2.disabled = true;
+  validateModalStep2.classList.remove ("pointer", "hover");
+  validateModalStep2.classList.add ("disabled");
+  }
+}
+
+// Vérifier et afficher le preview photo
 function uploadInputChangeHandler() {
   const file = uploadInput.files[0];
   if (file) {
@@ -226,7 +266,6 @@ function uploadInputChangeHandler() {
     };
     reader.readAsDataURL(file);
     displayCategoriesForModal();
-    validateModalStep2.disabled = false;
   } else {
     resetUpload();
   }
@@ -278,30 +317,16 @@ openModalButton.addEventListener("click", async () => {
 // Fermeture de la modale (bouton)
 closeModalButton.forEach((icon) => {
   icon.addEventListener("click", () => {
-    modal.close();
-    modal.style.display = "none";
-    showStep1();
-    resetUpload();
-
-    // Reset des champs du formulaire
-    document.getElementById("newWorkTitle").value = "";
-    document.getElementById("newWorkCategory").innerHTML = "";
-    validateModalStep2.disabled = true;
+    closeModal();
+    resetModal();
   });
 });
 
 // Fermeture de la modale (overlay)
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
-    modal.close();
-    modal.style.display = "none";
-    showStep1();
-    resetUpload();
-
-    // Reset des champs du formulaire
-    document.getElementById("newWorkTitle").value = "";
-    document.getElementById("newWorkCategory").innerHTML = "";
-    validateModalStep2.disabled = true;
+    closeModal();
+    resetModal();
   }
 });
 
@@ -316,16 +341,17 @@ backToModalStep1.forEach(icon => {
   icon.addEventListener("click", ()=> {
     showStep1();
     resetUpload();
-
-    // Reset des champs du formulaire et du bouton valider
-    document.getElementById("newWorkTitle").value = "";
-    document.getElementById("newWorkCategory").innerHTML = "";
-    validateModalStep2.disabled = true;
+    resetModal();
   })
 });
 
 // Charge et affiche nouvelle photo dans la modale (step 2)
 uploadInput.addEventListener("change", uploadInputChangeHandler);
+
+// Change l'affichage du bouton de confirmation de la step 2 selon la saisie utilisateur
+uploadInput.addEventListener("change", checkValidation);
+newWorkTitle.addEventListener("input", checkValidation);
+newWorkCategory.addEventListener("change", checkValidation);
 
 // Transmet les données de la modale à l'API + affichage
 newWorkForm.addEventListener("submit", async (e) => {
@@ -356,13 +382,10 @@ newWorkForm.addEventListener("submit", async (e) => {
     });
 
     if (response.ok) {
-      modal.close();
-      // showStep1();
-      // resetUpload();
+      closeModal();
+      resetModal();
       await getWorks();             
       await displayWorksForModal();
-      alert("Photo ajoutée avec succès !");
-      resetUpload();
     } else {
       const errorData = await response.json();
       alert(`Erreur lors de l'ajout : ${errorData.message || response.statusText}`);
