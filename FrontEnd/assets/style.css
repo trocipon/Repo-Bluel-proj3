@@ -417,6 +417,10 @@ hr {
 	padding: 0 25px;
 	margin-bottom: 20px;
 }
+form>hr {
+	margin-top: 30px;
+	width: 100%;
+}
 #validateNewWork {
 	display: flex;
 	justify-content: center;
