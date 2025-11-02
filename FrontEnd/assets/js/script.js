@@ -18,7 +18,7 @@ const previewContainer = document.getElementById("preview-container");
 const initialPreviewHTML = previewContainer.innerHTML;
 const newWorkForm = document.querySelector(".newWork-form");
 const newWorkTitle = document.getElementById("newWorkTitle");
-const newWorkCategory = document.getElementById("newWorkCategory"); 
+const newWorkCategory = document.getElementById("newWorkCategory");
 const validateModalStep2 = document.getElementById("validateNewWork");
 
 /***************************************************************/
@@ -96,7 +96,7 @@ async function getWorks(categoryId = 0) {
 // MODAL
 
 // Fermer la modale
-function closeModal () {
+function closeModal() {
   modal.close();
   modal.style.display = "none";
   showStep1();
@@ -104,12 +104,12 @@ function closeModal () {
 }
 
 // Réinitialiser la modale
-function resetModal () {
+function resetModal() {
   newWorkTitle.value = "";
   newWorkCategory.innerHTML = "";
   validateModalStep2.disabled = true;
-  validateModalStep2.classList.remove ("pointer", "hover");
-  validateModalStep2.classList.add ("disabled");
+  validateModalStep2.classList.remove("pointer", "hover");
+  validateModalStep2.classList.add("disabled");
 }
 
 // Naviguer dans la modale (step1 <-> step2)
@@ -162,9 +162,9 @@ async function displayWorksForModal(categoryId = 0) {
         });
         if (deleteResponse.ok) {
           figure.remove();
-          await getCategories(); 
-          await getWorks();      
-          await displayWorksForModal(); 
+          await getCategories();
+          await getWorks();
+          await displayWorksForModal();
         } else {
           alert("Erreur");
         }
@@ -188,14 +188,14 @@ function uploadInputChangeHandler() {
       alert("Format du fichier invalide");
       resetUpload();
       return;
-    }else if (file.size > maxSize) {
+    } else if (file.size > maxSize) {
       alert("Le fichier est trop lourd");
       resetUpload();
       return;
     }
     const reader = new FileReader();
     reader.onload = (e) => {
-    previewContainer.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+      previewContainer.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
     };
     reader.readAsDataURL(file);
     displayCategoriesForModal();
@@ -235,7 +235,7 @@ async function displayCategoriesForModal() {
     emptyOption.value = "";
     emptyOption.textContent = "";
     emptyOption.selected = true;
-    emptyOption.disabled = true; 
+    emptyOption.disabled = true;
     select.appendChild(emptyOption);
 
     data.forEach((item) => {
@@ -254,16 +254,16 @@ async function displayCategoriesForModal() {
 function checkValidation() {
   if (
     uploadInput.files.length > 0 &&
-    newWorkTitle.value.trim () !== "" &&
-    newWorkCategory.value !==""
+    newWorkTitle.value.trim() !== "" &&
+    newWorkCategory.value !== ""
   ) {
-  validateModalStep2.disabled = false;
-  validateModalStep2.classList.add ("pointer", "hover");
-  validateModalStep2.classList.remove ("disabled");
-  }else{
-  validateModalStep2.disabled = true;
-  validateModalStep2.classList.remove ("pointer", "hover");
-  validateModalStep2.classList.add ("disabled");
+    validateModalStep2.disabled = false;
+    validateModalStep2.classList.add("pointer", "hover");
+    validateModalStep2.classList.remove("disabled");
+  } else {
+    validateModalStep2.disabled = true;
+    validateModalStep2.classList.remove("pointer", "hover");
+    validateModalStep2.classList.add("disabled");
   }
 }
 
@@ -271,7 +271,7 @@ function checkValidation() {
 async function uploadImage(file) {
   const formData = new FormData();
   formData.append("image", file);
-  const response = await fetch(`${url}/works`, { 
+  const response = await fetch(`${url}/works`, {
     method: "POST",
     headers: {
       Authorization: "Bearer " + token,
@@ -282,7 +282,9 @@ async function uploadImage(file) {
     const data = await response.json();
     return data.imageUrl;
   } else {
-    throw new Error("Échec de l'opération, vous n'avez pas l'autorisation pour cette action.");
+    throw new Error(
+      "Échec de l'opération, vous n'avez pas l'autorisation pour cette action."
+    );
   }
 }
 
@@ -352,12 +354,12 @@ goToModalStep2.addEventListener("click", () => {
 });
 
 // Retour step2-->step1
-backToModalStep1.forEach(icon => {
-  icon.addEventListener("click", ()=> {
+backToModalStep1.forEach((icon) => {
+  icon.addEventListener("click", () => {
     showStep1();
     resetUpload();
     resetModal();
-  })
+  });
 });
 
 // Charge et affiche nouvelle photo dans la modale (step 2)
@@ -398,11 +400,13 @@ newWorkForm.addEventListener("submit", async (e) => {
     if (response.ok) {
       closeModal();
       resetModal();
-      await getWorks();             
+      await getWorks();
       await displayWorksForModal();
     } else {
       const errorData = await response.json();
-      alert(`Erreur lors de l'ajout : ${errorData.message || response.statusText}`);
+      alert(
+        `Erreur lors de l'ajout : ${errorData.message || response.statusText}`
+      );
     }
   } catch (error) {
     alert(`Erreur réseau : ${error.message}`);

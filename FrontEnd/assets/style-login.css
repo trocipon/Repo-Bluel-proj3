@@ -1,33 +1,35 @@
 /****Main****/
 
 .login-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 100px;
 }
 #login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 }
-.email-container, .password-container {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.email-container,
+.password-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 .login-button {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
-#login-form label, .forgotten-password {
-    color: rgba(61, 61, 61, 1);
+#login-form label,
+.forgotten-password {
+  color: rgba(61, 61, 61, 1);
 }
 .forgotten-password {
-    display: flex;
-    justify-content: center;
-    text-decoration: underline;
-    margin: 0;
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
+  margin: 0;
 }

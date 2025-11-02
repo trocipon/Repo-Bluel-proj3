@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sophie Bluel - Architecte d'intérieur - Login Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-	<meta name="description" content="">
-    <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href="./assets/style-login.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/style-login.css" />
+  </head>
+  <body>
     <div class="main-container">
-        <header>
-            <h1>Sophie Bluel <span>ARCHITECTE D'INTÉRIEUR</span></h1>
-	        <nav>
-		        <ul>
-			        <li class="pointer">projets</li>
-			        <li class="pointer">contacts</li>
-			        <li class="pointer" id="login">login</li>
-			        <li><img class="instagram-logo pointer" src="./assets/icons/instagram.png" alt="Instagram"></li>
-		        </ul>
-	        </nav>
-        </header>
-        <main>
-            <div class="login-container">
-                <h2>Log In</h2>
-                <form id="login-form">
-                    <div class="email-container">
-                        <label for="email">E-mail</label>
-                        <input type="email" name="email" id="email"> 
-                    </div>
-                    <div class="password-container">
-                        <label for="password">Mot de passe</label>
-                        <input type="password" name="password" id="password">
-                    </div>
-                    <div class="login-button">
-                        <button type="submit" id="valid" class="click-me-button hover pointer">Se connecter</button>
-                    </div>
-                </form>
-                <a href="#" class="forgotten-password pointer">Mot de passe oublié</a>
+      <header>
+        <h1>Sophie Bluel <span>ARCHITECTE D'INTÉRIEUR</span></h1>
+        <nav>
+          <ul>
+            <li class="pointer">projets</li>
+            <li class="pointer">contacts</li>
+            <li class="pointer" id="login">login</li>
+            <li>
+              <img
+                class="instagram-logo pointer"
+                src="./assets/icons/instagram.png"
+                alt="Instagram"
+              />
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <div class="login-container">
+          <h2>Log In</h2>
+          <form id="login-form">
+            <div class="email-container">
+              <label for="email">E-mail</label>
+              <input type="email" name="email" id="email" />
             </div>
-        </main>
+            <div class="password-container">
+              <label for="password">Mot de passe</label>
+              <input type="password" name="password" id="password" />
+            </div>
+            <div class="login-button">
+              <button
+                type="submit"
+                id="valid"
+                class="click-me-button hover pointer"
+              >
+                Se connecter
+              </button>
+            </div>
+          </form>
+          <a href="#" class="forgotten-password pointer">Mot de passe oublié</a>
+        </div>
+      </main>
     </div>
-   <footer>
-		<p class="legal-information pointer">Mentions Légales</p>
-   </footer> 
-  <script src="assets/js/login.js"></script>
-</body>
+    <footer>
+      <p class="legal-information pointer">Mentions Légales</p>
+    </footer>
+    <script src="assets/js/login.js"></script>
+  </body>
 </html>

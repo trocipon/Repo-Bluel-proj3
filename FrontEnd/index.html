@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <title>Sophie Bluel - Architecte d'intérieur</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,123 +16,142 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
-</head>
-<body>
+  </head>
+  <body>
     <div class="main-container">
-      	<div id="edition-banner">
-          	<i class="fa-regular fa-pen-to-square"></i>
-        	<p>Mode édition</p>
-      	</div>
-      	<header>
-        	<h1>Sophie Bluel <span>ARCHITECTE D'INTÉRIEUR</span></h1>
-        	<nav>
-          		<ul>
-            		<li class="pointer">projets</li>
-            		<li class="pointer">contacts</li>
-            		<li class="pointer" id="login">login</li>
-            		<li>
-              			<img class="instagram-logo pointer"
-                			 src="./assets/icons/instagram.png"
-                			 alt="Instagram"
-              			/>
-            		</li>
-          		</ul>
-        	</nav>
-      	</header>
-      	<main>
-			<section id="introduction">
-			<figure>
-				<img src="./assets/images/sophie-bluel.png" alt="" />
-			</figure>
-			<article>
-				<h2>Designer d'espace</h2>
-				<p>
-				Je raconte votre histoire, je valorise vos idées. Je vous
-				accompagne de la conception à la livraison finale du chantier.
-				</p>
-				<p>
-				Chaque projet sera étudié en commun, de façon à mettre en valeur
-				les volumes, les matières et les couleurs dans le respect de
-				l’esprit des lieux et le choix adapté des matériaux. Le suivi du
-				chantier sera assuré dans le souci du détail, le respect du
-				planning et du budget.
-				</p>
-				<p>
-				En cas de besoin, une équipe pluridisciplinaire peut-être
-				constituée : architecte DPLG, décorateur(trice)
-				</p>
-			</article>
-			</section>
-			<section id="portfolio">
-				<div id="portfolio-title">
-					<h2>Mes projets</h2>
-					<div id="portfolio-edit" class="pointer">
-						<i class="fa-regular fa-pen-to-square"></i>
-						<p>modifier</p>
-					</div>
-				</div>
-				<div id="categories-picture"></div>
-				<div class="gallery"></div>
-			</section>
-			<section id="contact">
-				<h2>Contact</h2>
-				<p>Vous avez un projet ? Discutons-en !</p>
-				<form action="#" method="post">
-					<label for="name">Nom</label>
-					<input type="text" name="name" id="name" />
-					<label for="email">Email</label>
-					<input type="email" name="email" id="email" />
-					<label for="message">Message</label>
-					<textarea
-						name="message"
-						id="message"
-						cols="30"
-						rows="10"
-					></textarea>
-					<input type="submit" class="click-me-button hover pointer" value="Envoyer" />
-				</form>
-			</section>
-      	</main>
+      <div id="edition-banner">
+        <i class="fa-regular fa-pen-to-square"></i>
+        <p>Mode édition</p>
+      </div>
+      <header>
+        <h1>Sophie Bluel <span>ARCHITECTE D'INTÉRIEUR</span></h1>
+        <nav>
+          <ul>
+            <li class="pointer">projets</li>
+            <li class="pointer">contacts</li>
+            <li class="pointer" id="login">login</li>
+            <li>
+              <img
+                class="instagram-logo pointer"
+                src="./assets/icons/instagram.png"
+                alt="Instagram"
+              />
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section id="introduction">
+          <figure>
+            <img src="./assets/images/sophie-bluel.png" alt="" />
+          </figure>
+          <article>
+            <h2>Designer d'espace</h2>
+            <p>
+              Je raconte votre histoire, je valorise vos idées. Je vous
+              accompagne de la conception à la livraison finale du chantier.
+            </p>
+            <p>
+              Chaque projet sera étudié en commun, de façon à mettre en valeur
+              les volumes, les matières et les couleurs dans le respect de
+              l’esprit des lieux et le choix adapté des matériaux. Le suivi du
+              chantier sera assuré dans le souci du détail, le respect du
+              planning et du budget.
+            </p>
+            <p>
+              En cas de besoin, une équipe pluridisciplinaire peut-être
+              constituée : architecte DPLG, décorateur(trice)
+            </p>
+          </article>
+        </section>
+        <section id="portfolio">
+          <div id="portfolio-title">
+            <h2>Mes projets</h2>
+            <div id="portfolio-edit" class="pointer">
+              <i class="fa-regular fa-pen-to-square"></i>
+              <p>modifier</p>
+            </div>
+          </div>
+          <div id="categories-picture"></div>
+          <div class="gallery"></div>
+        </section>
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>Vous avez un projet ? Discutons-en !</p>
+          <form action="#" method="post">
+            <label for="name">Nom</label>
+            <input type="text" name="name" id="name" />
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" />
+            <label for="message">Message</label>
+            <textarea
+              name="message"
+              id="message"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <input
+              type="submit"
+              class="click-me-button hover pointer"
+              value="Envoyer"
+            />
+          </form>
+        </section>
+      </main>
     </div>
     <footer>
-      	<p class="legal-information pointer">Mentions Légales</p>
+      <p class="legal-information pointer">Mentions Légales</p>
     </footer>
 
     <!-- ACCES A LA MODALE ET AU SCRIPT-->
     <dialog id="modal">
-		<div class="step-1">
-       		<i class="fa-solid fa-xmark pointer"></i>
-			<p id="modal-title">Galerie photo</p>
-      		<div class="gallery step-1"></div>
-      		<hr/>
-	  		<button  type="button" id="go-to-add-picture" class="click-me-button hover pointer">Ajouter une photo</button>
-		</div>
-		<div class="step-2">
-			<div id="modal-navigation">
-				<i class="fa-solid fa-arrow-left pointer"></i>
-        		<i class="fa-solid fa-xmark pointer"></i>
-			</div>
-      		<p id="modal-title">Ajout photo</p>
-      		<div class="blueContainerForPicture">
-				<div id="preview-container">
-    				<i class="fa-solid fa-image"></i>
-  					<button type="button" class="pointer" id="add-picture-button">
-  						<label for="add-picture-input" class="pointer">+ Ajouter photo</label>
-						<input type="file" id="add-picture-input" name="picture">
-					</button>
-					<p id="size-file-instruction">jpg, png : 4mo max</p>
-				</div>	
-			</div>
-			<form class="newWork-form">
-                <label for="newWorkTitle">Titre</label>
-                <input type="text" name="newWorkTitle" id="newWorkTitle"> 
-                <label for="newWorkCategory">Catégorie</label>
-				<select name="category" id="newWorkCategory"></select>
-                <hr/>
-	  			<button type="submit" id="validateNewWork" class="click-me-button disabled">Valider</button>
-			</form>
-      	</div>
+      <div class="step-1">
+        <i class="fa-solid fa-xmark pointer"></i>
+        <p id="modal-title">Galerie photo</p>
+        <div class="gallery step-1"></div>
+        <hr />
+        <button
+          type="button"
+          id="go-to-add-picture"
+          class="click-me-button hover pointer"
+        >
+          Ajouter une photo
+        </button>
+      </div>
+      <div class="step-2">
+        <div id="modal-navigation">
+          <i class="fa-solid fa-arrow-left pointer"></i>
+          <i class="fa-solid fa-xmark pointer"></i>
+        </div>
+        <p id="modal-title">Ajout photo</p>
+        <div class="blueContainerForPicture">
+          <div id="preview-container">
+            <i class="fa-solid fa-image"></i>
+            <button type="button" class="pointer" id="add-picture-button">
+              <label for="add-picture-input" class="pointer"
+                >+ Ajouter photo</label
+              >
+              <input type="file" id="add-picture-input" name="picture" />
+            </button>
+            <p id="size-file-instruction">jpg, png : 4mo max</p>
+          </div>
+        </div>
+        <form class="newWork-form">
+          <label for="newWorkTitle">Titre</label>
+          <input type="text" name="newWorkTitle" id="newWorkTitle" />
+          <label for="newWorkCategory">Catégorie</label>
+          <select name="category" id="newWorkCategory"></select>
+          <hr />
+          <button
+            type="submit"
+            id="validateNewWork"
+            class="click-me-button disabled"
+          >
+            Valider
+          </button>
+        </form>
+      </div>
     </dialog>
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
