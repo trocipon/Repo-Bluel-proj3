@@ -16,7 +16,7 @@
     "express": "^4.22.2",
     "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
-    "multer": "^2.0.2",
+    "multer": "^2.2.0",
     "sequelize": "^6.37.8",
     "sqlite3": "^5.0.5",
     "swagger-ui-express": "^4.3.0",
