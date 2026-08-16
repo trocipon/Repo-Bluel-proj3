@@ -60,6 +60,11 @@ h1 {
   justify-content: space-around;
   height: 42px;
 }
+header h1 a,
+nav a {
+  color: inherit;
+  text-decoration: none;
+}
 h1 > span {
   font-family: "Work Sans";
   font-size: 10px;
