@@ -1,4 +1,4 @@
-const url = "http://localhost:5678/api";
+const url = "https://repo-bluel-proj3.onrender.com/api";
 const editionBanner = document.getElementById("edition-banner");
 const modalButton = document.getElementById("portfolio-edit");
 const logout = document.getElementById("login");
